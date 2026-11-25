@@ -1,0 +1,12 @@
+# mem0-quickstart 실습용 의존성
+# mem0ai 2.2.1 (2026-11) 기준으로 API를 확인했다. 3.0에서 설정 키가 바뀔 수 있으니 상한을 둔다.
+mem0ai>=2.2,<3
+
+# .env 파일 읽기
+python-dotenv>=1.0
+
+# 경로 B(완전 로컬, Ollama)에만 필요. mem0가 ollama 프로바이더를 import할 때 쓴다.
+ollama>=0.4
+
+# 오프라인 테스트
+pytest>=8.0
