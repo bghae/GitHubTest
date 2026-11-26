@@ -226,7 +226,17 @@ def load_dotenv_if_available() -> None:
         return
     env_path = HERE / ".env"
     if env_path.exists():
-        load_dotenv(env_path)
+        # override=True: Windows 시스템 환경변수가 .env보다 먼저 읽히면
+        # 옛 OPENAI_BASE_URL(예: OpenRouter)·MEM0_EMBED_BASE_URL(예: NVIDIA)이
+        # 남아 있을 때 어디로 요청이 가는지 알 수 없어진다. .env를 우선한다.
+        before = {
+            k: os.environ[k]
+            for k in ("OPENAI_BASE_URL", "MEM0_EMBED_BASE_URL", "OPENAI_API_KEY")
+            if k in os.environ
+        }
+        load_dotenv(env_path, override=True)
+        if before:
+            print("  (시스템 환경변수를 .env 값으로 덮어씀: " + ", ".join(before) + ")")
         print(f"  .env 읽음: {env_path}")
     else:
         print("  .env 없음 → 환경변수만 사용 (.env.example을 복사해 만들 것)")
