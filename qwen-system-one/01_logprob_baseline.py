@@ -8,7 +8,7 @@
 실행하면 무엇을 보게 되는지
     (1) 세 가지 채점 방식(전체 로그확률 합 / 길이 정규화 / 첫 토큰)의 정확도 비교표,
     (2) 평균 확신도와 실제 정확도의 차이(과신 정도),
-    (3) 항목별 예측을 담은 outputs/preds_01_logprob.csv — 04의 보정 평가 입력.
+    (3) 항목별 예측을 담은 outputs/preds_01_logprob.csv — 05의 보정 평가 입력.
 
 왜 이 단계가 먼저인가
     Jev 같은 '판단 전용 모델'의 바닥값을 재는 단계다. 학습을 붙이기 전에
@@ -146,7 +146,7 @@ def main() -> None:
         conf = sum(confidences[k]) / len(confidences[k])
         print(f"{KEY_LABEL[k]:<22}{acc:>8.3f}{conf:>12.3f}{conf - acc:>20.3f}")
     print("-" * 66)
-    print("· 과신 값이 크면 '자신 있게 틀리는' 상태다. 04에서 ECE로 다시 정량화한다.")
+    print("· 과신 값이 크면 '자신 있게 틀리는' 상태다. 05에서 ECE로 다시 정량화한다.")
     print("· 항목이 28개뿐이라 정확도는 ±0.1 정도 흔들린다. 경향만 볼 것.")
 
     # 틀린 항목 몇 개를 눈으로 보여 준다(원인 파악용).
@@ -157,7 +157,7 @@ def main() -> None:
               f"정답 확률={d['p_answer']:.3f}")
 
     # ------------------------------------------------------------------
-    # CSV 저장 — 04가 이 파일을 읽어 Brier/ECE를 계산한다.
+    # CSV 저장 — 05가 이 파일을 읽어 Brier/ECE를 계산한다.
     # ------------------------------------------------------------------
     out = Path(args.out) if args.out else ensure_out_dir() / "preds_01_logprob.csv"
     write_preds_csv(preds_csv_rows, out)
