@@ -240,6 +240,22 @@ def load_dotenv_if_available() -> None:
         print(f"  .env 읽음: {env_path}")
     else:
         print("  .env 없음 → 환경변수만 사용 (.env.example을 복사해 만들 것)")
+    neutralize_openrouter_autoswitch()
+
+
+def neutralize_openrouter_autoswitch() -> None:
+    """mem0의 OpenAILLM은 OPENROUTER_API_KEY가 환경에 있으면 config를 무시하고
+    모든 요청을 OpenRouter로 보낸다(mem0ai 2.2.1 mem0/llms/openai.py 42행).
+
+    .env에 적은 base_url을 쓰는 것이 이 프로젝트의 전제이므로, OpenRouter를
+    쓰겠다고 명시(MEM0_USE_OPENROUTER=1)하지 않는 한 그 변수를 지운다.
+    """
+    if os.environ.get("MEM0_USE_OPENROUTER") == "1":
+        print("  OPENROUTER_API_KEY 사용 (MEM0_USE_OPENROUTER=1)")
+        return
+    if os.environ.pop("OPENROUTER_API_KEY", None):
+        print("  OPENROUTER_API_KEY 무시: mem0가 OpenRouter로 새지 않도록 지움 "
+              "(OpenRouter를 쓰려면 MEM0_USE_OPENROUTER=1)")
 
 
 def build_memory(kind: str):
