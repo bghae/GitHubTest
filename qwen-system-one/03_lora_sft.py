@@ -8,7 +8,7 @@
 실행하면 무엇을 보게 되는지
     (1) LoRA가 붙은 모듈 목록과 학습 파라미터 비율,
     (2) epoch별 loss 감소(학습이 실제로 되고 있는지),
-    (3) 학습 후 같은 선택지 채점 결과 → outputs/preds_03_lora.csv,
+    (3) 저장한 어댑터를 디스크에서 다시 읽은 모델로 매긴 채점 결과 → outputs/preds_03_lora.csv,
     (4) outputs/lora_adapter/ (어댑터, 수십 MB). --merge 를 주면 합친 모델도 저장.
 
 개념: LoRA
@@ -184,7 +184,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # 1. LoRA 붙이기
     # ------------------------------------------------------------------
-    from peft import LoraConfig, get_peft_model
+    from peft import LoraConfig, PeftModel, get_peft_model, set_peft_model_state_dict
 
     targets = find_lora_targets(model)
     print(f"[lora] 대상 모듈 {len(targets)}종: {', '.join(targets[:12])}"
@@ -271,10 +271,13 @@ def main() -> None:
     # 4. 어댑터 저장 (+ 선택적 병합)
     # ------------------------------------------------------------------
     adapter_dir = out_dir / "lora_adapter"
+    # dropout을 꺼 둔 추론 모드로 저장한다(다음에 읽었을 때와 조건을 같게 맞춰 두는 것).
+    model.eval()
     model.save_pretrained(adapter_dir)
     tokenizer.save_pretrained(adapter_dir)
     print(f"[saved] LoRA 어댑터: {adapter_dir}")
 
+    merged = None
     if args.merge:
         if args.four_bit:
             # 4bit 가중치에 병합하면 오차가 누적된다. 정확한 병합은 bf16에서 할 것.
@@ -286,15 +289,77 @@ def main() -> None:
         print(f"[saved] 병합 모델: {merged_dir} (약 8GB, 디스크 확인)")
 
     # ------------------------------------------------------------------
-    # 5. 학습 후 채점 — 01과 똑같은 함수로 확률을 낸다(비교 가능하게)
+    # 5. 저장한 어댑터를 다시 읽어서 채점 — 01과 똑같은 함수로 확률을 낸다(비교 가능하게)
+    #
+    #    왜 저장만 하고 메모리에 있는 모델로 채점하지 않는가:
+    #    "저장했다"는 말과 "복원된다"는 것은 다르다. 방금 좋아진 것은 메모리 안의 객체이고,
+    #    내일 다시 쓰는 것은 디스크의 파일이다. 경로가 어긋나거나 peft 버전이 바뀌면
+    #    학습은 끝까지 돌고도 그 결과를 다시 쓸 수 없다. 02가 헤드 파일을 저장 직후 되읽어
+    #    가중치를 되돌려 넣어 보는 것과 같은 이유로, 03도 디스크에서 새로 읽은 어댑터로 채점한다.
     # ------------------------------------------------------------------
-    model.eval()
+    eval_model: nn.Module = model
+    eval_label = "학습한 모델(메모리)"
+
+    if merged is not None:
+        # 병합본에는 어댑터 가중치가 본체에 섞여 들어가 있다. 그 위에 어댑터를 또 얹으면
+        # 같은 학습분이 두 번 적용되므로, 병합 경로에서는 어댑터를 다시 읽지 않고 병합본으로 채점한다.
+        eval_model = merged
+        eval_label = f"병합 모델({merged_dir.name}, 어댑터 병합 완료)"
+        print(f"[eval] 채점 모델: {eval_label} — 재로드하지 않고 병합본을 그대로 쓴다")
+    else:
+        # 재로드가 실패해도 학습 결과를 잃지 않도록, 방금 학습한 LoRA 가중치를 메모리에 한 벌 복사해 둔다(수십 MB).
+        lora_now = {k: v.detach().clone() for k, v in model.named_parameters() if "lora_" in k}
+        base_model = None
+        try:
+            # model.get_base_model()을 그대로 넘기지 않는다: get_peft_model이 본체의 Linear 층을
+            # LoRA 층으로 바꿔 놓아서, 그 위에 어댑터를 또 얹으면 층이 겹쳐 같은 학습분이 두 번 적용된다.
+            # unload()로 LoRA 층을 떼어낸 깨끗한 본체를 만든 뒤, 디스크의 어댑터를 새 모델 객체로 읽는다.
+            base_model = model.unload()
+            reloaded = PeftModel.from_pretrained(base_model, str(adapter_dir))
+            reloaded.eval()
+
+            # "읽었다"를 값으로 확인한다: 디스크에서 올린 LoRA 가중치가 방금 학습한 것과 같은가.
+            # (학습분이 빠진 채로 채점하는 상황을 여기서 잡는다. 02의 재로드 검증과 같은 취지)
+            lora_loaded = {k: v.detach().cpu() for k, v in reloaded.named_parameters() if "lora_" in k}
+            if lora_loaded.keys() != lora_now.keys():
+                raise RuntimeError(
+                    f"어댑터 키가 어긋납니다(디스크 {len(lora_loaded)}개 / 학습 {len(lora_now)}개)"
+                )
+            max_diff = max(
+                (lora_loaded[k].float() - lora_now[k].detach().cpu().float()).abs().max().item()
+                for k in lora_loaded
+            )
+            print(f"[reload] 성공: {adapter_dir} → 새 모델 객체"
+                  f" (LoRA 텐서 {len(lora_loaded)}개, 학습본과 최대 차이 {max_diff:.2e})")
+            eval_model = reloaded
+            eval_label = f"재로드한 어댑터({adapter_dir.name})"
+        except Exception as e:
+            # 여기서 조용히 넘어가면 '학습이 빠진 모델'의 점수가 정상 결과처럼 보인다. 크게 남긴다.
+            print(f"[warn] 어댑터 재로드 실패 — {type(e).__name__}: {e}")
+            print(f"[warn] 학습 결과는 {adapter_dir} 에 저장돼 있습니다. 이번 채점은 학습 가중치로 계속합니다.")
+            if base_model is None:
+                # unload 전에 실패했다면 학습한 모델이 그대로 메모리에 있으므로 그것을 쓴다.
+                eval_model, eval_label = model, "학습한 모델(메모리, 재로드 실패)"
+            else:
+                # unload 뒤 읽기만 실패한 경우: 메모리 스냅샷으로 학습분을 다시 붙인다.
+                try:
+                    restored = get_peft_model(base_model, lora_config)
+                    set_peft_model_state_dict(restored, lora_now)
+                    restored.eval()
+                    eval_model = restored
+                    eval_label = "메모리 스냅샷으로 되붙인 학습 모델(재로드 실패)"
+                    print("[reload] 메모리 스냅샷으로 학습 가중치를 되붙였습니다.")
+                except Exception as e2:
+                    print(f"[warn] 복원도 실패 — {type(e2).__name__}: {e2}")
+                    raise SystemExit("학습 가중치를 되살리지 못해 채점을 중단합니다.")
+
+    eval_model.eval()
     pred_rows = []
-    print(f"\n[eval] 학습 후 채점: {len(eval_rows)}개 항목")
+    print(f"\n[eval] 채점 모델: {eval_label} / 항목 {len(eval_rows)}개")
     for idx, item in enumerate(eval_rows, start=1):
         choices = item["choices"]
         prompt = build_prompt(tokenizer, item["instruction"], choices)
-        scores = score_choices(model, tokenizer, prompt, choices)
+        scores = score_choices(eval_model, tokenizer, prompt, choices)
         if len(scores) != len(choices):
             continue
         _, probs = softmax_over(scores, "mean")
