@@ -10,10 +10,10 @@
 # 덮어써질 수 있기 때문입니다. 4-2절에서 CUDA 빌드로 먼저 설치하세요.
 # torch>=2.4
 transformers>=5.0        # Qwen3.5(qwen3_5) 지원 버전. 4.x에서는 모델 클래스가 없습니다.
-peft>=0.14               # 03의 LoRA
+peft>=0.14               # 03·04의 LoRA
 accelerate>=1.0          # device_map 로딩
 
-# 04의 지표 계산·CSV 처리 (pandas만으로도 되지만 편의상 포함)
+# 05의 지표 계산·CSV 처리 (pandas만으로도 되지만 편의상 포함)
 pandas>=2.0
 scikit-learn>=1.4
 
