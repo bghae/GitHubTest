@@ -6,9 +6,9 @@ common.py — 실습 전체가 함께 쓰는 공통 도구
     "모델 불러오기, chat template 적용, 선택지 로그확률 계산, 결과 CSV 저장을 어떻게 한 곳에 모을까?"
 
 실행하면 무엇을 보게 되는지
-    직접 실행하는 파일은 아니다. 00~04 스크립트가 `from common import ...` 로 가져다 쓴다.
-    01(무학습 로그확률), 02(헤드 학습), 03(LoRA)이 **같은 함수**로 점수를 내기 때문에,
-    세 방법의 확률을 04에서 같은 자로 비교할 수 있다. 이게 이 파일의 존재 이유다.
+    직접 실행하는 파일은 아니다. 00~05 스크립트가 `from common import ...` 로 가져다 쓴다.
+    01(무학습 로그확률), 02(헤드 학습), 03(LoRA), 04(헤드+LoRA)가 **같은 함수**로 점수를 내고
+    같은 CSV 형식으로 남기 때문에, 네 방법의 확률을 05에서 같은 자로 비교할 수 있다. 이게 이 파일의 존재 이유다.
 """
 
 from __future__ import annotations
@@ -47,7 +47,7 @@ SYSTEM_PROMPT = (
     "설명, 인사, 문장 부호를 덧붙이지 않는다."
 )
 
-# 01/02/03이 모두 이 열 순서로 CSV를 쓴다. 04는 이 형식만 읽는다.
+# 01/02/03/04가 모두 이 열 순서로 CSV를 쓴다. 05는 이 형식만 읽는다.
 PRED_COLUMNS = [
     "id",            # 데이터 항목 id
     "task",          # 선택지 집합 이름 (예: fidelity, sentiment)
@@ -473,7 +473,7 @@ def softmax_over(scores: Dict[str, Dict[str, float]], key: str) -> Tuple[List[st
 
     왜 필요한가: 모델의 로그확률은 어휘 전체(24만 개)에 대한 값이라 그대로는
     "얼마나 확신하는가"를 알 수 없다. 후보들만 놓고 다시 softmax를 취하면
-    "이 4개 중 A일 확률 0.87"처럼 해석할 수 있고, 04의 보정 평가(Brier/ECE)가 가능해진다.
+    "이 4개 중 A일 확률 0.87"처럼 해석할 수 있고, 05의 보정 평가(Brier/ECE)가 가능해진다.
 
     왜 최댓값을 빼는가: exp는 -1000 같은 값에서 0이 되어 버린다. 최댓값을 빼면
     계산 결과는 같으면서 수치적으로 안전하다(표준적인 softmax 트릭).
@@ -492,14 +492,14 @@ def softmax_over(scores: Dict[str, Dict[str, float]], key: str) -> Tuple[List[st
 
 
 # ---------------------------------------------------------------------------
-# 결과 CSV (01/02/03 → 04)
+# 결과 CSV (01/02/03/04 → 05)
 # ---------------------------------------------------------------------------
 
 
 def write_preds_csv(rows: Iterable[Dict[str, Any]], path: Path | str) -> Path:
     """예측 결과를 공통 형식 CSV로 저장한다.
 
-    왜 CSV인가: 04가 pandas 한 줄로 읽어 지표를 계산할 수 있고,
+    왜 CSV인가: 05가 pandas 한 줄로 읽어 지표를 계산할 수 있고,
     엑셀로 열어 오답을 눈으로 확인할 수도 있다.
     """
     import csv
@@ -522,7 +522,7 @@ def write_preds_csv(rows: Iterable[Dict[str, Any]], path: Path | str) -> Path:
 
 
 def read_preds_csv(path: Path | str):
-    """04가 쓰는 역방향 함수. JSON 문자열 열을 다시 파이썬 객체로 되돌린다."""
+    """05가 쓰는 역방향 함수. JSON 문자열 열을 다시 파이썬 객체로 되돌린다."""
     import pandas as pd
 
     df = pd.read_csv(path, encoding="utf-8-sig")
@@ -544,7 +544,7 @@ def make_pred_row(
     """한 항목의 예측 행을 공통 형식으로 만든다.
 
     왜 따로 함수로 빼는가: 01(로그확률)·02(헤드)·03(LoRA)이 같은 형식을 써야
-    04가 세 방법을 한 표에서 비교할 수 있다. 형식이 어긋나는 사고를 한 곳에서 막는다.
+    05가 네 방법을 한 표에서 비교할 수 있다. 형식이 어긋나는 사고를 한 곳에서 막는다.
     """
     answer_index = choices.index(item["answer"])
     predicted_index = max(range(len(probs)), key=lambda i: probs[i])
