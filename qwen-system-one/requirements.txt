@@ -6,7 +6,9 @@
 #   pip install -r requirements.txt
 
 # 모델 실행·학습의 핵심
-torch>=2.4
+# torch는 여기서 설치하지 않습니다. 이 파일로 설치하면 PyPI 기본 인덱스의 CPU 빌드로
+# 덮어써질 수 있기 때문입니다. 4-2절에서 CUDA 빌드로 먼저 설치하세요.
+# torch>=2.4
 transformers>=5.0        # Qwen3.5(qwen3_5) 지원 버전. 4.x에서는 모델 클래스가 없습니다.
 peft>=0.14               # 03의 LoRA
 accelerate>=1.0          # device_map 로딩
