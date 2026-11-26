@@ -162,7 +162,7 @@ def main() -> None:
     out = Path(args.out) if args.out else ensure_out_dir() / "preds_01_logprob.csv"
     write_preds_csv(preds_csv_rows, out)
     print(f"\n[saved] {out}")
-    print("        다음: python 04_eval.py  (또는 02/03을 먼저 돌리고 한꺼번에 비교)")
+    print("        다음: python 05_eval.py  (또는 02/03을 먼저 돌리고 한꺼번에 비교)")
 
 
 if __name__ == "__main__":
