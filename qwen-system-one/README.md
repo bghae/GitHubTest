@@ -46,7 +46,7 @@ qwen-system-one/
 ├── 04_eval.py              정확도·Brier·ECE·신뢰도 표
 ├── data/
 │   ├── sample.jsonl        채점/평가용 28건 (01·02 검증, 03 평가)
-│   └── train.jsonl         학습용 16건 (03 학습 전용, sample과 겹치지 않음)
+│   └── train.jsonl         학습용 80건 (03 학습 전용, sample과 겹치지 않음)
 └── outputs/                실행하면 자동 생성 (예측 CSV, 헤드, 어댑터, 보고서)
 ```
 
@@ -168,7 +168,7 @@ python 03_lora_sft.py --model Qwen/Qwen3.5-9B --4bit
 | `answer` | 필수 | `choices` 중 하나와 **정확히 같은 문자열** |
 | `rationale` | 선택 | 판단 이유. `03 --with-rationale` 로 함께 학습 가능 |
 
-- `data/sample.jsonl`(28건)은 **평가용**, `data/train.jsonl`(16건)은 **학습용**으로 내용이 겹치지 않습니다.
+- `data/sample.jsonl`(28건)은 **평가용**, `data/train.jsonl`(80건)은 **학습용**으로 내용이 겹치지 않습니다.
   같은 데이터로 학습하고 평가하면 "외운 것"을 실력으로 착각하므로, 실제로 쓸 때도 반드시 나눠 주세요.
 - 실제 데이터로 바꿀 때는 `--data` / `--eval-data` 로 경로만 지정하면 됩니다.
 
