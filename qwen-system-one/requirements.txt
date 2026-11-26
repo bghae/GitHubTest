@@ -1,0 +1,20 @@
+# Qwen3.5 판단 모델 실습 — 의존성
+# RTX 3060 Ti 12GB / Windows / Python 3.11+ 기준
+#
+# 설치 순서 (PyTorch를 먼저, CUDA 빌드로):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+#   pip install -r requirements.txt
+
+# 모델 실행·학습의 핵심
+torch>=2.4
+transformers>=5.0        # Qwen3.5(qwen3_5) 지원 버전. 4.x에서는 모델 클래스가 없습니다.
+peft>=0.14               # 03의 LoRA
+accelerate>=1.0          # device_map 로딩
+
+# 04의 지표 계산·CSV 처리 (pandas만으로도 되지만 편의상 포함)
+pandas>=2.0
+scikit-learn>=1.4
+
+# 선택 사항
+datasets>=3.0            # 데이터를 허브/대용량으로 다룰 때 직접 쓰게 됨. 이 실습 코드는 미사용
+bitsandbytes>=0.45       # 9B를 4bit로 돌릴 때만 (Windows는 CUDA 버전 확인)

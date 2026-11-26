@@ -1,0 +1,16 @@
+{"id": "t01", "task": "fidelity", "instruction": "[질문]\n물은 무엇으로 이루어져 있는가?\n\n[답변]\n수소 두 개와 산소 한 개로 이루어져 있습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t02", "task": "fidelity", "instruction": "[질문]\n지구의 위성은 무엇인가?\n\n[답변]\n달입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t03", "task": "fidelity", "instruction": "[질문]\n5 곱하기 6은 얼마인가?\n\n[답변]\n11입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "5×6은 30이므로 답변이 틀렸다."}
+{"id": "t04", "task": "fidelity", "instruction": "[질문]\n대한민국에서 가장 높은 산은 무엇인가?\n\n[답변]\n한라산입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t05", "task": "fidelity", "instruction": "[질문]\n태양은 스스로 빛을 내는가?\n\n[답변]\n아니요, 달처럼 반사광만 냅니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오"}
+{"id": "t06", "task": "fidelity", "instruction": "[질문]\n1년은 몇 개월인가?\n\n[답변]\n12개월입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t07", "task": "fidelity", "instruction": "[질문]\n2진수 10은 십진수로 얼마인가?\n\n[답변]\n2입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t08", "task": "fidelity", "instruction": "[질문]\n지구가 한 바퀴 자전하는 데 걸리는 시간은?\n\n[답변]\n약 24시간입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "t09", "task": "fidelity", "instruction": "[질문]\n피카소는 어떤 사람이었는가?\n\n[답변]\n교향곡을 작곡한 음악가였습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "피카소는 화가이지 음악가가 아니다."}
+{"id": "t10", "task": "fidelity", "instruction": "[질문]\n1기압에서 물의 끓는점은 화씨 몇 도인가?\n\n[답변]\n화씨 100도입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "섭씨 100도이며 화씨로는 212도다."}
+{"id": "t11", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 카페 커피가 정말 맛있다. 매일 오고 싶다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "t12", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 약속 시간을 두 시간이나 기다렸는데 연락 한 통 없었다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "t13", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 휴관일은 매주 월요일입니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "t14", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 새 노트북이 기대 이상으로 빨라서 만족한다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "t15", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 주문한 신발이 잘못 배송되어 한 주를 허비했다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "t16", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이용 요금은 다음 달부터 인상됩니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}

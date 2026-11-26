@@ -1,0 +1,28 @@
+{"id": "f01", "task": "fidelity", "instruction": "[질문]\n2024년 기준 대한민국의 수도는 어디인가?\n\n[답변]\n서울입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f02", "task": "fidelity", "instruction": "[질문]\n물의 화학식은 무엇인가?\n\n[답변]\nH2O입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f03", "task": "fidelity", "instruction": "[질문]\n1 더하기 1은 얼마인가?\n\n[답변]\n3입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "1+1의 값은 2이므로 답변이 틀렸다."}
+{"id": "f04", "task": "fidelity", "instruction": "[질문]\n태양계에서 가장 큰 행성은 무엇인가?\n\n[답변]\n목성입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f05", "task": "fidelity", "instruction": "[질문]\n태양과 지구 중 무엇이 중심인가?\n\n[답변]\n지구가 중심이며 태양이 지구 주위를 돕니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오"}
+{"id": "f06", "task": "fidelity", "instruction": "[질문]\n피보나치 수열의 첫 두 항은 무엇인가?\n\n[답변]\n0과 1입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f07", "task": "fidelity", "instruction": "[질문]\n파이썬 코드 print(2**10)의 출력은 무엇인가?\n\n[답변]\n1024입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f08", "task": "fidelity", "instruction": "[질문]\n다음 문장의 문법 오류를 지적하라: '그는 어제 내일 떠났다.'\n\n[답변]\n문법적인 오류는 없습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오"}
+{"id": "f09", "task": "fidelity", "instruction": "[질문]\n대한민국의 통화 단위는 무엇인가?\n\n[답변]\n원(KRW)입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f10", "task": "fidelity", "instruction": "[질문]\n파이썬에서 리스트와 튜플의 차이는 무엇인가?\n\n[답변]\n리스트는 불변이고 튜플은 가변입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "리스트가 가변이고 튜플이 불변이다. 답변이 반대로 설명했다."}
+{"id": "f11", "task": "fidelity", "instruction": "[질문]\n1킬로미터는 몇 미터인가?\n\n[답변]\n1000미터입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f12", "task": "fidelity", "instruction": "[질문]\n사과는 무슨 색인가?\n\n[답변]\n보통 빨간색이며, 초록색이나 노란색 품종도 있습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f13", "task": "fidelity", "instruction": "[질문]\n2020 도쿄 올림픽은 실제로 몇 년에 열렸는가?\n\n[답변]\n2019년에 열렸습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "코로나로 연기되어 2021년에 열렸다."}
+{"id": "f14", "task": "fidelity", "instruction": "[질문]\n1기압에서 물이 어는 온도는 몇 도인가?\n\n[답변]\n섭씨 0도입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f15", "task": "fidelity", "instruction": "[질문]\n해수면에서 물이 끓는 온도는 몇 도인가?\n\n[답변]\n섭씨 50도입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오"}
+{"id": "f16", "task": "fidelity", "instruction": "[질문]\nHTTP 상태 코드 404는 무엇을 뜻하는가?\n\n[답변]\n서버 내부 오류를 뜻합니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오"}
+{"id": "s01", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오늘 면접에서 좋은 인상을 주고 왔다. 기분이 최고다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s02", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 택배가 또 파손된 채로 왔다. 정말 화가 난다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s03", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 회의는 오후 3시에 회의실 B에서 시작합니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s04", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 식당 김치는 정말 맛있다. 또 오고 싶다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s05", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 시험에 떨어졌다. 한 달 동안 준비했는데 허탈하다.", "choices": ["긍정", "부정", "중립"], "answer": "부정", "rationale": "실망과 허탈을 표현하고 있다."}
+{"id": "s06", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 드라이브 경로는 서울에서 강릉까지 약 3시간 걸립니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s07", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 직원이 친절하게 안내해 주어서 기분 좋게 다녀왔다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s08", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 예약한 숙소가 갑자기 취소되어 밤에 갈 곳이 없어졌다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s09", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 제품 사양은 무게 1.2kg, 배터리 사용 시간 8시간입니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s10", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 아이가 처음으로 자전거를 혼자 탔다. 눈물이 날 만큼 기쁘다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s11", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 배송은 예정일보다 사흘 늦었고 연락도 없었다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s12", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 다음 달 첫째 주에 정기 점검이 예정되어 있습니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
