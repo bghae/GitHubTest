@@ -1,0 +1,31 @@
+# mem0-quickstart — 구글 AI 스튜디오(Gemini) 무료 키로 돌리기
+# 저장 위치: 프로젝트 폴더\mem0-quickstart\.env
+# (메모장에서 "다른 이름으로 저장" → 파일 이름 ".env", 인코딩 UTF-8)
+
+# 1) LLM·임베딩 공통 주소 (구글의 OpenAI 호환 엔드포인트)
+OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
+
+# 2) AI 스튜디오에서 발급한 키 (https://aistudio.google.com/apikey)
+MEM0_COMPAT_API_KEY=여기에_발급받은_키_붙여넣기
+
+# 3) 모델
+MEM0_LLM_MODEL=gemini-2.5-flash
+MEM0_EMBED_MODEL=text-embedding-004
+MEM0_EMBED_DIMS=768
+
+# 4) (선택) 출력 토큰 상한. 402/토큰 초과가 나면 512로 낮춰 본다.
+# MEM0_LLM_MAX_TOKENS=512
+
+# ---------------------------------------------------------------
+# 실행 (프로젝트 폴더에서, PowerShell)
+#   copy .env.example .env   <- 기존 .env를 새로 만들 때만
+#   python demo.py --config compatible --reset
+#
+# 주의
+# - config 이름은 compatible 입니다. (compat 아님)
+# - 임베딩 차원을 768로 바꾸므로 기존 컬렉션과 섞이지 않게 --reset을 꼭 붙입니다.
+#   기존 nim 결과를 남기고 싶으면 data 폴더를 미리 복사해 두세요.
+# - 임베딩 모델 이름이 404가 나면 gemini-embedding-001 로 바꾸고
+#   MEM0_EMBED_DIMS=3072 로 맞춰 다시 --reset 하면 됩니다.
+# - 시스템 환경변수에 옛 NVIDIA_API_KEY / OPENAI_API_KEY가 남아 있으면
+#   .env보다 먼저 읽힙니다. 이번 경로에서는 둘 다 지우거나 비워 두세요.
