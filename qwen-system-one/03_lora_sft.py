@@ -381,7 +381,7 @@ def main() -> None:
     print(f"[eval] 학습 후 정확도 {acc:.3f} (n={len(pred_rows)})")
     csv_path = write_preds_csv(pred_rows, out_dir / "preds_03_lora.csv")
     print(f"[saved] {csv_path}")
-    print("        다음: python 04_eval.py  — 01/02/03을 같은 표에서 비교")
+    print("        다음: python 05_eval.py  — 01/02/03을 같은 표에서 비교")
 
 
 if __name__ == "__main__":
