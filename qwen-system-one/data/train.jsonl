@@ -14,3 +14,67 @@
 {"id": "t14", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 새 노트북이 기대 이상으로 빨라서 만족한다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
 {"id": "t15", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 주문한 신발이 잘못 배송되어 한 주를 허비했다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
 {"id": "t16", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이용 요금은 다음 달부터 인상됩니다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "f17", "task": "fidelity", "instruction": "[질문]\n한글을 창제한 왕은 누구인가?\n\n[답변]\n조선의 세종대왕입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f18", "task": "fidelity", "instruction": "[질문]\n세계에서 면적이 가장 넓은 나라는 어디인가?\n\n[답변]\n캐나다입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "면적이 가장 넓은 나라는 러시아다."}
+{"id": "f19", "task": "fidelity", "instruction": "[질문]\n임진왜란이 일어난 해는 언제인가?\n\n[답변]\n1592년입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f20", "task": "fidelity", "instruction": "[질문]\n호주의 수도는 어디인가?\n\n[답변]\n캔버라입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f21", "task": "fidelity", "instruction": "[질문]\n캐나다의 수도는 어디인가?\n\n[답변]\n토론토입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "캐나다의 수도는 오타와이고 토론토는 최대 도시다."}
+{"id": "f22", "task": "fidelity", "instruction": "[질문]\n브라질에서 주로 쓰는 공용어는 무엇인가?\n\n[답변]\n포르투갈어입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f23", "task": "fidelity", "instruction": "[질문]\n지구 대기에서 부피 비율이 가장 큰 기체는 무엇인가?\n\n[답변]\n산소입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "대기의 약 78%는 질소이고 산소는 약 21%다."}
+{"id": "f24", "task": "fidelity", "instruction": "[질문]\n식물이 광합성 과정에서 내보내는 기체는 무엇인가?\n\n[답변]\n산소입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f25", "task": "fidelity", "instruction": "[질문]\n소리가 가장 빠르게 전달되는 매질은 무엇인가?\n\n[답변]\n고체입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f26", "task": "fidelity", "instruction": "[질문]\n혈액에서 산소를 운반하는 세포는 무엇인가?\n\n[답변]\n백혈구입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "산소 운반은 적혈구가 하며 백혈구는 면역을 담당한다."}
+{"id": "f27", "task": "fidelity", "instruction": "[질문]\n다이아몬드의 주성분은 무엇인가?\n\n[답변]\n탄소입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f28", "task": "fidelity", "instruction": "[질문]\n피사의 사탑은 어느 나라에 있는가?\n\n[답변]\n그리스입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "피사의 사탑은 이탈리아에 있다."}
+{"id": "f29", "task": "fidelity", "instruction": "[질문]\n지진의 규모를 나타내는 데 쓰이는 척도는 무엇인가?\n\n[답변]\n리히터 규모입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f30", "task": "fidelity", "instruction": "[질문]\n고대 로마 제국의 중심 도시는 어디였는가?\n\n[답변]\n로마입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f31", "task": "fidelity", "instruction": "[질문]\n삼각형 세 내각의 합은 몇 도인가?\n\n[답변]\n180도입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f32", "task": "fidelity", "instruction": "[질문]\n15의 제곱은 얼마인가?\n\n[답변]\n30입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "15의 제곱은 15×15이므로 225다."}
+{"id": "f33", "task": "fidelity", "instruction": "[질문]\n에베레스트산은 어느 산맥에 있는가?\n\n[답변]\n안데스 산맥입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "에베레스트산은 히말라야 산맥에 있다."}
+{"id": "f34", "task": "fidelity", "instruction": "[질문]\n7은 소수인가?\n\n[답변]\n예, 1과 자기 자신으로만 나누어집니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f35", "task": "fidelity", "instruction": "[질문]\n9는 소수인가?\n\n[답변]\n예, 소수입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "9는 3으로 나누어지므로 소수가 아니다."}
+{"id": "f36", "task": "fidelity", "instruction": "[질문]\n사하라 사막은 어느 대륙에 있는가?\n\n[답변]\n아프리카입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f37", "task": "fidelity", "instruction": "[질문]\n0.25를 기약분수로 나타내면 얼마인가?\n\n[답변]\n1/4입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f38", "task": "fidelity", "instruction": "[질문]\n지구에서 가장 깊은 해구가 있는 바다는 어디인가?\n\n[답변]\n인도양입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "마리아나 해구가 있는 곳은 태평양이다."}
+{"id": "f39", "task": "fidelity", "instruction": "[질문]\n2, 4, 6의 평균은 얼마인가?\n\n[답변]\n6입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "세 수의 합 12를 3으로 나눈 평균은 4다."}
+{"id": "f40", "task": "fidelity", "instruction": "[질문]\n원의 넓이를 구하는 공식은 무엇인가?\n\n[답변]\n반지름 × 반지름 × 원주율입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f41", "task": "fidelity", "instruction": "[질문]\n직각삼각형에서 빗변의 제곱은 무엇과 같은가?\n\n[답변]\n나머지 두 변의 차의 제곱과 같습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "피타고라스 정리에 따라 두 직각변의 제곱의 합과 같다."}
+{"id": "f42", "task": "fidelity", "instruction": "[질문]\n윤년은 보통 몇 년에 한 번 오는가?\n\n[답변]\n4년에 한 번입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f43", "task": "fidelity", "instruction": "[질문]\n우리나라 행정구역에서 가장 큰 단위는 무엇인가?\n\n[답변]\n읍·면·동입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "가장 큰 단위는 특별시·광역시·도이며 읍·면·동은 기초 단위다."}
+{"id": "f44", "task": "fidelity", "instruction": "[질문]\n우리나라를 상징하는 꽃은 무엇인가?\n\n[답변]\n무궁화입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f45", "task": "fidelity", "instruction": "[질문]\n커피에서 각성 효과를 내는 성분은 무엇인가?\n\n[답변]\n카페인입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f46", "task": "fidelity", "instruction": "[질문]\n1년 중 낮이 가장 긴 날은 언제인가?\n\n[답변]\n동지입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "낮이 가장 긴 날은 하지이고 동지는 밤이 가장 긴 날이다."}
+{"id": "f47", "task": "fidelity", "instruction": "[질문]\n세계에서 인구가 가장 많은 대륙은 어디인가?\n\n[답변]\n아프리카입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "인구가 가장 많은 대륙은 아시아다."}
+{"id": "f48", "task": "fidelity", "instruction": "[질문]\n프로이트는 어떤 분야의 학자였는가?\n\n[답변]\n천문학자였습니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "프로이트는 심리학자이며 천문학과 무관하다."}
+{"id": "f49", "task": "fidelity", "instruction": "[질문]\n만유인력의 법칙을 정리한 과학자는 누구인가?\n\n[답변]\n아인슈타인입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "만유인력의 법칙은 뉴턴이 정리했고 아인슈타인은 상대성이론을 세웠다."}
+{"id": "f50", "task": "fidelity", "instruction": "[질문]\n전화기를 발명한 사람은 누구인가?\n\n[답변]\n에디슨입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "전화기는 그레이엄 벨이 발명했고 에디슨은 전구와 축음기로 알려져 있다."}
+{"id": "f51", "task": "fidelity", "instruction": "[질문]\n지구의 나이는 약 얼마인가?\n\n[답변]\n약 46만 년입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "지구의 나이는 약 46억 년이다."}
+{"id": "f52", "task": "fidelity", "instruction": "[질문]\n회의록에 일반적으로 포함되는 항목은 무엇인가?\n\n[답변]\n일시, 참석자, 논의 내용, 결정 사항, 후속 조치입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f53", "task": "fidelity", "instruction": "[질문]\n업무 이메일 제목에는 무엇을 담는 것이 좋은가?\n\n[답변]\n용건을 바로 알 수 있는 핵심 내용입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f54", "task": "fidelity", "instruction": "[질문]\n노벨상은 어느 나라에서 수여하는가?\n\n[답변]\n미국입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "노벨상은 스웨덴에서, 평화상은 노르웨이에서 수여한다."}
+{"id": "f55", "task": "fidelity", "instruction": "[질문]\n보고서에서 결론은 보통 어디에 두는가?\n\n[답변]\n본문 뒤 마지막 부분입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "예"}
+{"id": "f56", "task": "fidelity", "instruction": "[질문]\n시계에서 긴바늘이 가리키는 것은 무엇인가?\n\n[답변]\n시(時)입니다.\n\n이 답변이 질문에 충실한가?", "choices": ["예", "아니오"], "answer": "아니오", "rationale": "긴바늘은 분을, 짧은바늘은 시를 가리킨다."}
+{"id": "s13", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오랜만에 가족과 함께한 저녁 식사가 즐거웠다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s14", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 산책 중에 갑자기 비가 쏟아져 옷이 다 젖었다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s15", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 도서관은 평일 오전 9시에 문을 연다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s16", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 새로 산 화분에서 꽃이 피었다. 매일 아침이 즐겁다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s17", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이웃집 소음 때문에 밤새 잠을 설쳤다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s18", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 정기 구독 요금은 매월 15일에 결제된다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s19", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 운동을 꾸준히 했더니 체력이 늘어 뿌듯하다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s20", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 고장 난 제품을 세 번이나 다시 보내야 했다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s21", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 건물은 지상 12층, 지하 3층으로 이루어져 있다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s22", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오늘 발표가 무사히 끝나 마음이 가볍다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s23", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이번 달 관리비가 지난달보다 두 배로 올랐다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s24", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 계약은 체결일로부터 3년간 유효하다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s25", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 책은 읽는 내내 웃음이 났다. 강력히 추천한다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s26", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 숙제를 하던 중 컴퓨터가 꺼져서 작업이 날아갔다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s27", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 제품의 재질은 스테인리스 스틸이다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s28", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오랜만에 친구와 통화를 길게 했더니 마음이 따뜻해졌다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s29", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 새 옷을 세탁했더니 색이 다 빠졌다. 정말 속상하다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s30", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 열차는 10분 간격으로 운행된다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s31", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오래 미뤄 둔 숙제를 끝내고 나니 후련하다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s32", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 식당 음식이 너무 짜서 남기고 나왔다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s33", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 이 도시의 연평균 기온은 12도이다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
+{"id": "s34", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 동네에 새로 생긴 빵집의 빵이 정말 맛있다.", "choices": ["긍정", "부정", "중립"], "answer": "긍정"}
+{"id": "s35", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 오랜만에 만난 친구가 약속 시간을 또 어겼다.", "choices": ["긍정", "부정", "중립"], "answer": "부정"}
+{"id": "s36", "task": "sentiment", "instruction": "다음 문장의 감정을 분류하라.\n\n문장: 신청서는 우편 또는 방문으로 접수할 수 있다.", "choices": ["긍정", "부정", "중립"], "answer": "중립"}
