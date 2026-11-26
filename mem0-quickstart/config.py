@@ -282,7 +282,9 @@ def compatible_config(
             "config": {
                 "model": llm_model,
                 "temperature": 0.1,
-                "max_tokens": 2000,
+                # 402 "requests more credits, or fewer max_tokens" 를 피하려면
+                # MEM0_LLM_MAX_TOKENS 로 낮춘다. (예: 512)
+                "max_tokens": int(_env("MEM0_LLM_MAX_TOKENS", "2000") or 2000),
                 "openai_base_url": base_url,
                 "api_key": api_key,
             },
