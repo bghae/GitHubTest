@@ -215,7 +215,7 @@ NVIDIA API Catalog(build.nvidia.com)는 `https://integrate.api.nvidia.com/v1`에
 NVIDIA_API_KEY=nvapi-...
 NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
 # 모델을 바꿀 때만 (비워 두면 아래 기본값)
-MEM0_LLM_MODEL=meta/llama-3.3-70b-instruct
+MEM0_LLM_MODEL=moonshotai/kimi-k3.1-pro
 MEM0_EMBED_MODEL=nvidia/llama-3.2-nv-embedqa-1b-v1
 MEM0_EMBED_DIMS=2048
 ```
@@ -226,8 +226,10 @@ MEM0_EMBED_DIMS=2048
 python demo.py --config nim
 ```
 
-기본 조합은 `meta/llama-3.3-70b-instruct`(기억 추출) + `nvidia/llama-3.2-nv-embedqa-1b-v1`(2048차원, 한국어 포함 다국어 임베딩)이다.
-2026-11에 카탈로그와 엔드포인트에서 이름을 확인한 값이다.
+기본 조합은 `moonshotai/kimi-k3.1-pro`(기억 추출) + `nvidia/llama-3.2-nv-embedqa-1b-v1`(2048차원, 한국어 포함 다국어 임베딩)이다.
+2026-11에 `/v1/models` 로 카탈로그를 직접 받아 확인한 값이다. 이때 이전 기본값 `meta/llama-3.3-70b-instruct` 는 목록에 없었다.
+LLM 대안은 `nvidia/nemotron-3.5-lightning-30b-a3b`(빠름), `nvidia/nemotron-3-ultra-550b-a55b`(품질), `z-ai/glm-5.3-flash`, `minimaxai/minimax-m3.1-flash` 다.
+`kimi-k3.1-pro` 는 thinking 모델이라 추론 문장을 먼저 내보내면 mem0의 JSON 파싱이 깨질 수 있고, 그때는 위 대안으로 바꾼다.
 
 ### 4) 임베딩에서 삐끗하기 쉬운 지점
 
@@ -285,7 +287,7 @@ curl https://integrate.api.nvidia.com/v1/models -H "Authorization: Bearer $NVIDI
 
 [3/5] mem0 초기화
   경로: nim
-  LLM: openai / meta/llama-3.3-70b-instruct
+  LLM: openai / moonshotai/kimi-k3.1-pro
   LLM base_url: https://integrate.api.nvidia.com/v1
   임베딩: openai / nvidia/llama-3.2-nv-embedqa-1b-v1
   벡터스토어: qdrant → ...\data\qdrant

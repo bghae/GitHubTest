@@ -299,7 +299,10 @@ def compatible_config(
 # NVIDIA API Catalog(build.nvidia.com)는 https://integrate.api.nvidia.com/v1 에서
 # OpenAI 호환이므로, 위의 compatible_config()에 주소와 키만 바꿔 넣으면 된다.
 NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
-NIM_DEFAULT_LLM = "meta/llama-3.3-70b-instruct"
+# 기본 LLM. 2026-11 카탈로그에서 meta/llama-3.3-70b-instruct 가 빠져 있어
+# 구조화 출력을 명시 지원하는 moonshotai/kimi-k3.1-pro 로 잡았다.
+# 대안: nvidia/nemotron-3.5-lightning-30b-a3b(빠름), nvidia/nemotron-3-ultra-550b-a55b(품질)
+NIM_DEFAULT_LLM = "moonshotai/kimi-k3.1-pro"
 # 한국어를 포함한 다국어 QA 임베딩(2048차원).
 # input_type을 요구하는 비대칭 모델이라 demo.py가 nim_embedder.py로 감싸서 쓴다.
 NIM_DEFAULT_EMBED = "nvidia/llama-3.2-nv-embedqa-1b-v1"
@@ -322,7 +325,10 @@ def nvidia_nim_config(
                   MEM0_EMBED_DIMS, MEM0_EMBED_BASE_URL
 
     기본 모델
-        LLM   : meta/llama-3.3-70b-instruct
+        LLM   : moonshotai/kimi-k3.1-pro
+                (이전 기본값 meta/llama-3.3-70b-instruct 는 2026-11 카탈로그에서 빠졌다.
+                 추론 텍스트를 먼저 내보내면 JSON 파싱이 깨질 수 있으니,
+                 그럴 때는 nvidia/nemotron-3.5-lightning-30b-a3b 로 바꾼다)
         임베딩: nvidia/llama-3.2-nv-embedqa-1b-v1 (2048차원, 한국어 포함 다국어)
 
     임베딩 모델은 QA(asymmetric) 계열이라 NIM이 input_type(``query``/``passage``)을
