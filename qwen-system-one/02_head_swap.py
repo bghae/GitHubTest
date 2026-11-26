@@ -9,7 +9,7 @@
 실행하면 무엇을 보게 되는지
     (1) 백본은 얼려 두고 헤드만 학습할 때의 epoch별 loss 감소,
     (2) 학습에 쓰지 않은 검증 항목의 정확도,
-    (3) outputs/head.pt (헤드 가중치)와 outputs/preds_02_head.csv (04용 예측).
+    (3) outputs/head.pt (헤드 가중치)와 outputs/preds_02_head.csv (05용 예측).
 
 개념: linear probe
     Qwen3.5의 마지막 층 hidden state에는 "이 문장이 어떤 판단을 요구하는지"에 대한
@@ -483,7 +483,7 @@ def main() -> None:
         print(f"[saved] 예측 CSV(검증 항목만): {csv_path}")
         print("        다음: python 05_eval.py  — 01과 02를 같은 표에서 비교")
     else:
-        print("[note] 회귀 헤드는 확률을 내지 않으므로 04의 보정 평가 대상이 아닙니다.")
+        print("[note] 회귀 헤드는 확률을 내지 않으므로 05의 보정 평가 대상이 아닙니다.")
 
 
 if __name__ == "__main__":
