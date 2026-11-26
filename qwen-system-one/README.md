@@ -72,6 +72,18 @@ pip install torch --index-url https://download.pytorch.org/whl/cu121
 > 드라이버가 CUDA 12.4 이상이면 `cu124` 로 바꿔도 됩니다. 설치 후 확인:
 > `python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"`
 
+**이미 CPU 빌드 torch가 깔려 있다면** 위 명령만으로는 바뀌지 않습니다.
+pip이 "Requirement already satisfied: torch"라고 하며 CPU 빌드를 그대로 두기 때문입니다.
+`torch.cuda.is_available()`이 `False`로 나오면 먼저 지우고 다시 설치하세요.
+
+```powershell
+pip uninstall -y torch
+pip install torch --index-url https://download.pytorch.org/whl/cu121
+```
+
+같은 이유로 `pip install -r requirements.txt` 는 torch를 새로 깔지 않습니다(이미 설치된 것으로 판단).
+단, CUDA 빌드가 아닌 torch가 깔려 있으면 그것을 바꿔 주지도 않습니다.
+
 ### 4-3. 나머지
 
 ```powershell
