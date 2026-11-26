@@ -406,7 +406,10 @@ def main() -> None:
     tokenizer, model_id = load_tokenizer(args.model)
     model, model_id = load_model(model_id, load_in_4bit=args.four_bit, for_training=True)
 
-    backbone, lm_head = resolve_text_backbone(model)
+    backbone, lm_head_ref = resolve_text_backbone(model)
+    # 참조를 남겨 두면 lm_head 가중치가 메모리에 살아남는다(9B는 약 2GB).
+    # 지우기 전에 참조를 끊어야 실제로 VRAM이 돌아온다.
+    del lm_head_ref
     freed = drop_lm_head(model)
     if freed:
         print(f"[head-swap] lm_head 제거: {freed/1e6:.1f}M 파라미터 확보")
@@ -438,7 +441,7 @@ def main() -> None:
         meta["num_classes"][group_name] = None if args.head == "reg" else len(group_rows[0]["choices"])
         meta["choices"][group_name] = list(group_rows[0]["choices"])
 
-        probs, labels, metrics = evaluate(wrapper, eval_set, device, pad_token_id, args.head)
+        probs, _labels, metrics = evaluate(wrapper, eval_set, device, pad_token_id, args.head)
         if args.head == "cls":
             for ex, p in zip(eval_set, probs):
                 pred_rows.append(
