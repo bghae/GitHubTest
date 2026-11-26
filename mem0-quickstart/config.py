@@ -39,6 +39,8 @@ EMBED_DIMS = {
     "baai/bge-m3": 1024,
     "nvidia/nv-embedqa-e5-v5": 1024,
     "nvidia/llama-3.2-nv-embedqa-1b-v1": 2048,
+    "nvidia/nemotron-3.5-embed-8b": 4096,
+    "nvidia/nemotron-3.5-embed-1b": 2048,
 }
 
 
@@ -303,9 +305,12 @@ NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
 # 구조화 출력을 명시 지원하는 moonshotai/kimi-k3.1-pro 로 잡았다.
 # 대안: nvidia/nemotron-3.5-lightning-30b-a3b(빠름), nvidia/nemotron-3-ultra-550b-a55b(품질)
 NIM_DEFAULT_LLM = "moonshotai/kimi-k3.1-pro"
-# 한국어를 포함한 다국어 QA 임베딩(2048차원).
-# input_type을 요구하는 비대칭 모델이라 demo.py가 nim_embedder.py로 감싸서 쓴다.
-NIM_DEFAULT_EMBED = "nvidia/llama-3.2-nv-embedqa-1b-v1"
+# 기본 임베딩. 무료 계정에서는 nvidia/llama-3.2-nv-embedqa-1b-v1 이
+# 404(Function not found for account)로 막히는 경우가 있어, 200으로 확인된
+# nvidia/nemotron-3.5-embed-8b(4096차원)를 기본값으로 둔다.
+# 같은 계열 1B(nvidia/nemotron-3.5-embed-1b, 2048차원)도 쓸 수 있다.
+# input_type(passage/query)을 요구하는 비대칭 모델이라 demo.py가 nim_embedder.py로 감싸서 쓴다.
+NIM_DEFAULT_EMBED = "nvidia/nemotron-3.5-embed-8b"
 
 
 def nvidia_nim_config(
@@ -329,7 +334,7 @@ def nvidia_nim_config(
                 (이전 기본값 meta/llama-3.3-70b-instruct 는 2026-11 카탈로그에서 빠졌다.
                  추론 텍스트를 먼저 내보내면 JSON 파싱이 깨질 수 있으니,
                  그럴 때는 nvidia/nemotron-3.5-lightning-30b-a3b 로 바꾼다)
-        임베딩: nvidia/llama-3.2-nv-embedqa-1b-v1 (2048차원, 한국어 포함 다국어)
+        임베딩: nvidia/nemotron-3.5-embed-8b (4096차원, 한국어 포함 다국어)
 
     임베딩 모델은 QA(asymmetric) 계열이라 NIM이 input_type(``query``/``passage``)을
     요구한다. demo.py가 nim_embedder.attach_nim_embedder()로 감싸서 적재는 passage,
