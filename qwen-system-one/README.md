@@ -43,7 +43,7 @@ qwen-system-one/
 ├── 01_logprob_baseline.py  학습 없는 기준선 (세 가지 채점 방식 비교)
 ├── 02_head_swap.py         lm_head 제거 → 판단 헤드 학습 (linear probe / last block)
 ├── 03_lora_sft.py          LoRA SFT + 학습 후 확률 재측정
-├── 04_eval.py              정확도·Brier·ECE·신뢰도 표
+├── 05_eval.py              정확도·Brier·ECE·신뢰도 표
 ├── data/
 │   ├── sample.jsonl        채점/평가용 28건 (01·02 검증, 03 평가)
 │   └── train.jsonl         학습용 80건 (03 학습 전용, sample과 겹치지 않음)
@@ -110,7 +110,7 @@ pip install "bitsandbytes>=0.45"
 | 01 | `python 01_logprob_baseline.py --limit 5` → 전체 | 학습 없이 얼마나 맞히는가 / 채점 방식 3종 차이 | 5건 30초, 28건 2~4분 |
 | 02 | `python 02_head_swap.py` | 헤드만 학습해도 정확도가 오르는가 / loss가 내려가는가 | 3~6분 |
 | 03 | `python 03_lora_sft.py --epochs 1 --limit 8` (예열) → `python 03_lora_sft.py` | LoRA가 확률을 얼마나 바꾸는가 | 예열 3~5분, 전체 15~30분 |
-| 04 | `python 04_eval.py` | 세 방법의 정확도·Brier·ECE 비교 | 즉시 |
+| 04 | `python 05_eval.py` | 세 방법의 정확도·Brier·ECE 비교 | 즉시 |
 
 전체를 한 번에:
 
@@ -119,7 +119,7 @@ python 00_smoke_test.py
 python 01_logprob_baseline.py
 python 02_head_swap.py
 python 03_lora_sft.py
-python 04_eval.py
+python 05_eval.py
 ```
 
 **먼저 00에서 OOM이 나면 01 이후는 의미가 없습니다.** README 6절(VRAM)을 보고 모델을 낮추세요.
@@ -176,7 +176,7 @@ python 03_lora_sft.py --model Qwen/Qwen3.5-9B --4bit
 
 ## 8. 결과 파일 형식 (01·02·03이 모두 같은 형식)
 
-`outputs/preds_*.csv` — `04_eval.py`가 이 파일들을 읽습니다.
+`outputs/preds_*.csv` — `05_eval.py`가 이 파일들을 읽습니다.
 
 | 열 | 의미 |
 |---|---|
