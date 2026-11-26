@@ -481,7 +481,7 @@ def main() -> None:
     if args.head == "cls" and pred_rows:
         csv_path = write_preds_csv(pred_rows, out_dir / "preds_02_head.csv")
         print(f"[saved] 예측 CSV(검증 항목만): {csv_path}")
-        print("        다음: python 04_eval.py  — 01과 02를 같은 표에서 비교")
+        print("        다음: python 05_eval.py  — 01과 02를 같은 표에서 비교")
     else:
         print("[note] 회귀 헤드는 확률을 내지 않으므로 04의 보정 평가 대상이 아닙니다.")
 
