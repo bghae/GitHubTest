@@ -1,4 +1,4 @@
-# mem0-quickstart 설치 스크립트 (Windows / PowerShell)
+﻿# mem0-quickstart 설치 스크립트 (Windows / PowerShell)
 #
 # 실행 방법 (mem0-quickstart 폴더에서):
 #   powershell -ExecutionPolicy Bypass -File .\install-windows.ps1
